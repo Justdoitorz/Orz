@@ -18,6 +18,7 @@ target_include_directories(orz PRIVATE include)
 
 if (ORZ_TEST) 
     add_subdirectory(test)
+    enable_testing()
 endif()
 
 install(TARGETS orz)
