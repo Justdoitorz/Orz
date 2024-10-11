@@ -209,3 +209,21 @@ TEST(Util, AllSameValue)
     EXPECT_EQ(orz_allsame_value(same, ORZ_ARRLEN(same), 2), false);
     EXPECT_EQ(orz_allsame_value(same, 1, 2), false);
 }
+
+TEST(Util, Str2Hex)
+{
+    uint8_t hex[2];
+    EXPECT_LT(orz_str2hex(NULL, sizeof(hex), "BEEF", 4), 0);
+    EXPECT_LT(orz_str2hex(hex, sizeof(hex), NULL, 4), 0);
+    EXPECT_LT(orz_str2hex(hex, 1, "BEEF", 4), 0);
+    EXPECT_LT(orz_str2hex(hex, sizeof(hex), "BEEF", 3), 0);
+
+
+    EXPECT_EQ(orz_str2hex(hex, sizeof(hex), "BEEF", 0), 0);
+    EXPECT_EQ(orz_str2hex(hex, sizeof(hex), "BEEF", 2), 1);
+    EXPECT_EQ(orz_str2hex(hex, sizeof(hex), "BEEF", 4), 2);
+    EXPECT_EQ(hex[0], 0xBE);
+    EXPECT_EQ(hex[1], 0xEF);
+
+}
+

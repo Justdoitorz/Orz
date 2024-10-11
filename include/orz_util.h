@@ -123,6 +123,19 @@ int orz_allsame(const void *hex, uint32_t len);
  */
 int orz_allsame_value(const void *hex, uint32_t len, uint8_t value);
 
+
+/**
+ * @brief Convert every two hexadecimal characters into bytes
+ *
+ * @param[out] hex target's space
+ * @param hlen target max length
+ * @param[in] str source string's space
+ * @param slen source stirng's length
+ * @retval < 0, error
+ * @retval >= 0, convert result length
+ */
+int orz_str2hex(uint8_t *hex, uint32_t hlen, const char *str, uint32_t slen);
+
 __ORZ_C_LEAVE__
 
 
