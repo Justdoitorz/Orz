@@ -224,6 +224,83 @@ TEST(Util, Str2Hex)
     EXPECT_EQ(orz_str2hex(hex, sizeof(hex), "BEEF", 4), 2);
     EXPECT_EQ(hex[0], 0xBE);
     EXPECT_EQ(hex[1], 0xEF);
+}
 
+TEST(Util, Hex2Str)
+{
+    char str[2 * 2 + 1];
+    EXPECT_LT(orz_hex2str(NULL, sizeof(str), "\xBE\xEF", 2), 0);
+    EXPECT_LT(orz_hex2str(str, sizeof(str), NULL, 2), 0);
+    EXPECT_LT(orz_hex2str(str, 4, "\xBE\xEF", 2), 0);
+
+
+    EXPECT_EQ(orz_hex2str(str, sizeof(str), "\xBE\xEF", 0), 0);
+    EXPECT_STREQ(str, "");
+    EXPECT_EQ(orz_hex2str(str, sizeof(str), "\xBE\xEF", 1), 2);
+    EXPECT_STRCASEEQ(str, "be");
+    EXPECT_EQ(orz_hex2str(str, sizeof(str), "\xBE\xEF", 2), 4);
+    EXPECT_STRCASEEQ(str, "beef");
+}
+
+TEST(Util, Hex2StrSeparate)
+{
+    char str[2 * 3];
+    EXPECT_LT(orz_hex2str_separate(NULL, sizeof(str), "\xBE\xEF", 2, ' '), 0);
+    EXPECT_LT(orz_hex2str_separate(str, sizeof(str), NULL, 2, ' '), 0);
+    EXPECT_LT(orz_hex2str_separate(str, 5, "\xBE\xEF", 2, ' '), 0);
+
+
+    EXPECT_EQ(orz_hex2str_separate(str, sizeof(str), "\xBE\xEF", 0, ' '), 0);
+    EXPECT_STREQ(str, "");
+    EXPECT_EQ(orz_hex2str_separate(str, sizeof(str), "\xBE\xEF", 1, ' '), 2);
+    EXPECT_STRCASEEQ(str, "be");
+    EXPECT_EQ(orz_hex2str_separate(str, sizeof(str), "\xBE\xEF", 2, ' '), 5);
+    EXPECT_STRCASEEQ(str, "be ef");
+}
+
+
+TEST(Util, Hex2Bits)
+{
+    char str[2 * 8 + 1];
+    EXPECT_LT(orz_hex2bits(NULL, sizeof(str), "\xBE\xEF", 2), 0);
+    EXPECT_LT(orz_hex2bits(str, sizeof(str), NULL, 2), 0);
+    EXPECT_LT(orz_hex2bits(str, 16, "\xBE\xEF", 2), 0);
+
+
+    EXPECT_EQ(orz_hex2bits(str, sizeof(str), "\xBE\xEF", 0), 0);
+    EXPECT_STREQ(str, "");
+    EXPECT_EQ(orz_hex2bits(str, sizeof(str), "\xBE\xEF", 1), 8);
+    EXPECT_STREQ(str, "10111110");
+    EXPECT_EQ(orz_hex2bits(str, sizeof(str), "\xBE\xEF", 2), 16);
+    EXPECT_STREQ(str, "1011111011101111");
+}
+
+TEST(Util, Hex2BitsSeparate)
+{
+    char str[2 * 9];
+    EXPECT_LT(orz_hex2bits_separate(NULL, sizeof(str), "\xBE\xEF", 2, ' '), 0);
+    EXPECT_LT(orz_hex2bits_separate(str, sizeof(str), NULL, 2, ' '), 0);
+    EXPECT_LT(orz_hex2bits_separate(str, 17, "\xBE\xEF", 2, ' '), 0);
+
+
+    EXPECT_EQ(orz_hex2bits_separate(str, sizeof(str), "\xBE\xEF", 0, ' '), 0);
+    EXPECT_STREQ(str, "");
+    EXPECT_EQ(orz_hex2bits_separate(str, sizeof(str), "\xBE\xEF", 1, ' '), 8);
+    EXPECT_STREQ(str, "10111110");
+    EXPECT_EQ(orz_hex2bits_separate(str, sizeof(str), "\xBE\xEF", 2, ' '), 17);
+    EXPECT_STREQ(str, "10111110 11101111");
+}
+
+TEST(Util, Bin1Bits)
+{
+    EXPECT_EQ(orz_bin_1bits(-1), 64);
+    EXPECT_EQ(orz_bin_1bits(0), 0);
+    EXPECT_EQ(orz_bin_1bits(0x12345678), 13);
+    EXPECT_EQ(orz_bin_1bits(0x87654321), 13);
+    EXPECT_EQ(orz_bin_1bits(0x123456789abcdef), 13 + 19);
+
+    for (uint32_t idx = 0; idx < 64; ++idx) {
+        EXPECT_EQ(orz_bin_1bits(1ULL << idx), 1);
+    }
 }
 

@@ -136,8 +136,73 @@ int orz_allsame_value(const void *hex, uint32_t len, uint8_t value);
  */
 int orz_str2hex(uint8_t *hex, uint32_t hlen, const char *str, uint32_t slen);
 
+
+/**
+ * @brief Convert multiple hexadecimal values to strings
+ *
+ * @param[out] str result strings entry
+ * @param slen result's max length
+ * @param[in] hex source hex value entry
+ * @param hlen source hex value length
+ * @retval < 0, error
+ * @retval >= 0, actual result length
+ */
+int orz_hex2str(char *str, uint32_t slen, const void *hex, uint32_t hlen);
+
+
+/**
+ * @brief Convert multiple hexadecimal values to strings, Use separators between each byte
+ *
+ * @param[out] str result strings entry
+ * @param slen result's max length
+ * @param[in] hex source hex value entry
+ * @param hlen source hex value length
+ * @param sep separator character
+ * @retval < 0, error
+ * @retval >= 0, actual result length
+ */
+int orz_hex2str_separate(char *str, uint32_t slen, const void *hex, uint32_t hlen, char sep);
+
+
+/**
+ * @brief Convert multiple hexadecimal values to binary strings
+ *
+ * @param[out] bits result strings entry
+ * @param blen result's max length
+ * @param[in] hex source hex value entry
+ * @param hlen source hex value length
+ * @retval < 0, error
+ * @retval >= 0, actual result length
+ */
+int orz_hex2bits(char *bits, uint32_t blen, const void *hex, uint32_t hlen);
+
+
+/**
+ * @brief Convert multiple hexadecimal values to binary strings, Use separators between each byte
+ *
+ * @param[out] bits result strings entry
+ * @param blen result's max length
+ * @param[in] hex source hex value entry
+ * @param hlen source hex value length
+ * @param sep separator character
+ * @retval < 0, error
+ * @retval >= 0, actual result length
+ */
+int orz_hex2bits_separate(char *bits, uint32_t blen, const void *hex, uint32_t hlen, char sep);
+
+
+/**
+ * @brief The count of bits with a value of 1
+ *
+ * @param value
+ * @retval >= 0, binary 1 bit count
+ */
+int orz_bin_1bits(uint64_t value);
+
+
 __ORZ_C_LEAVE__
 
 
 
 #endif //__ORZ_UTIL_H__
+
