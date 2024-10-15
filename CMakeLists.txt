@@ -10,6 +10,7 @@ set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
 
 add_library(orz SHARED 
     src/orz_util.c
+    src/orz_algorithm.c
 )
 
 

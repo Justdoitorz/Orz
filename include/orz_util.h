@@ -33,6 +33,7 @@
 #define ORZ_POW2_N(n)           (1ULL << (n))
 #define ORZ_ARRLEN(array)       ((sizeof(array)/sizeof(0[array])))
 
+#define ORZ_ENTRY_EXPAND3(entry)    entry, ORZ_ARRLEN(entry), sizeof(0[entry])
 
 /**
  * @brief Convert hexadecimal values to characters

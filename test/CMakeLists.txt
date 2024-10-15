@@ -15,3 +15,7 @@ add_executable(util_test util_test.cpp)
 target_link_libraries(util_test PRIVATE orz GTest::GTest GTest::Main)
 add_test(NAME util COMMAND util_test)
 
+add_executable(algorithm_test algorithm_test.cpp)
+target_link_libraries(algorithm_test PRIVATE orz GTest::GTest GTest::Main)
+add_test(NAME algorithm COMMAND algorithm_test)
+
