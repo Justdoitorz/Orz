@@ -7,10 +7,12 @@ add_definitions(-D_GNU_SOURCE)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_C_VISIBILITY_PRESET hidden)
 set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
+set_source_files_properties(src/orz_endian.c PROPERTIES COMPILE_FLAGS "-fvisibility=default")
 
 add_library(orz SHARED 
     src/orz_util.c
     src/orz_algorithm.c
+    src/orz_endian.c
 )
 
 

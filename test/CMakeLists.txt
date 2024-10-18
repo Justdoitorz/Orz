@@ -19,3 +19,7 @@ add_executable(algorithm_test algorithm_test.cpp)
 target_link_libraries(algorithm_test PRIVATE orz GTest::GTest GTest::Main)
 add_test(NAME algorithm COMMAND algorithm_test)
 
+add_executable(endian_test endian_test.cpp)
+target_link_libraries(endian_test PRIVATE orz GTest::GTest GTest::Main)
+add_test(NAME endian COMMAND endian_test)
+
