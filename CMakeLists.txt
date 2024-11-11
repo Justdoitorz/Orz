@@ -13,6 +13,7 @@ add_library(orz SHARED
     src/orz_util.c
     src/orz_algorithm.c
     src/orz_endian.c
+    src/orz_tostring.c
 )
 
 
