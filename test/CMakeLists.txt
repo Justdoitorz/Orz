@@ -27,3 +27,7 @@ add_executable(tostring_test tostring_test.cpp)
 target_link_libraries(tostring_test PRIVATE orz GTest::GTest GTest::Main)
 add_test(NAME tostring COMMAND tostring_test)
 
+add_executable(retval_test retval_test.cpp)
+target_link_libraries(retval_test PRIVATE orz GTest::GTest GTest::Main)
+add_test(NAME retval COMMAND retval_test)
+

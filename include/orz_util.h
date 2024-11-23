@@ -33,6 +33,12 @@
 #define ORZ_POW2_N(n)           (1ULL << (n))
 #define ORZ_ARRLEN(array)       ((sizeof(array)/sizeof(0[array])))
 
+#define xSTR(x)                 #x
+#define ORZ_XSTR(x)             xSTR(x)
+
+#define ORZ_CONCAT(a, b)        a ## b
+#define ORZ_CONCAT3(a, b, c)    a ## b ## c
+
 #define ORZ_ENTRY_EXPAND3(entry)    entry, ORZ_ARRLEN(entry), sizeof(0[entry])
 
 /**
