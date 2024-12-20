@@ -9,6 +9,7 @@
  * 
  */
 #include "orz_util.h"
+#include "orz_retval.h"
 
 static 
 bool __allsame(const uint8_t *hex, uint32_t len)
@@ -25,8 +26,8 @@ bool __allsame(const uint8_t *hex, uint32_t len)
 __ORZ_EXPORT
 int orz_allsame(const void *hex, uint32_t len)
 {
-    if (NULL == hex) return -1;
-    if (0 == len) return -2;
+    if (NULL == hex) return ORZ_RETVAL_ERROR(MOD_UTIL, RSN_NULLPTR, 0);
+    if (0 == len) return ORZ_RETVAL_ERROR(MOD_UTIL, RSN_ZERO_LENGTH, 0);
 
     return __allsame((const uint8_t *)hex, len);
 }
@@ -34,8 +35,8 @@ int orz_allsame(const void *hex, uint32_t len)
 __ORZ_EXPORT
 int orz_allsame_value(const void *hex, uint32_t len, uint8_t value)
 {
-    if (NULL == hex) return -1;
-    if (0 == len) return -2;
+    if (NULL == hex) return ORZ_RETVAL_ERROR(MOD_UTIL, RSN_NULLPTR, 1);
+    if (0 == len) return ORZ_RETVAL_ERROR(MOD_UTIL, RSN_ZERO_LENGTH, 1);
 
     if (*(const uint8_t *)hex != value) 
         return false;
@@ -58,9 +59,9 @@ uint32_t __str2hex(uint8_t *hex, const char *str, uint32_t slen)
 __ORZ_EXPORT
 int orz_str2hex(uint8_t *hex, uint32_t hlen, const char *str, uint32_t slen)
 {
-    if (NULL == hex || NULL == str) return -1;
-    if ((slen & 1) != 0) return -2;
-    if (slen > hlen * 2) return -3;
+    if (NULL == hex || NULL == str) return ORZ_RETVAL_ERROR(MOD_UTIL, RSN_NULLPTR, 2);
+    if ((slen & 1) != 0) return ORZ_RETVAL_ERROR(MOD_UTIL, RSN_WRONG_LENGTH, 2);
+    if (slen > hlen * 2) return ORZ_RETVAL_ERROR(MOD_UTIL, RSN_SPACE_NO_ENOUGH, 2);
 
     return __str2hex(hex, str, slen);
 }
@@ -106,8 +107,8 @@ uint32_t __hex2str(char *str, const uint8_t *hex, uint32_t hlen, const char *sep
 __ORZ_EXPORT
 int orz_hex2str(char *str, uint32_t slen, const void *hex, uint32_t hlen)
 {
-    if (NULL == str || NULL == hex) return -1;
-    if (slen <= hlen * 2) return -2;
+    if (NULL == str || NULL == hex) return ORZ_RETVAL_ERROR(MOD_UTIL, RSN_NULLPTR, 3);
+    if (slen <= hlen * 2) return ORZ_RETVAL_ERROR(MOD_UTIL, RSN_SPACE_NO_ENOUGH, 3);
 
     return __hex2str(str, (const uint8_t *)hex, hlen, NULL);
 }
@@ -115,8 +116,8 @@ int orz_hex2str(char *str, uint32_t slen, const void *hex, uint32_t hlen)
 __ORZ_EXPORT
 int orz_hex2str_separate(char *str, uint32_t slen, const void *hex, uint32_t hlen, char sep)
 {
-    if (NULL == str || NULL == hex) return -1;
-    if (slen < hlen * 3) return -2;
+    if (NULL == str || NULL == hex) return ORZ_RETVAL_ERROR(MOD_UTIL, RSN_NULLPTR, 4);
+    if (slen < hlen * 3) return ORZ_RETVAL_ERROR(MOD_UTIL, RSN_SPACE_NO_ENOUGH, 4);
 
     return __hex2str(str, (const uint8_t *)hex, hlen, &sep);
 }
@@ -144,8 +145,8 @@ uint32_t __hex2bits(char *bits, const uint8_t *hex, uint32_t hlen, char *sep)
 __ORZ_EXPORT
 int orz_hex2bits(char *bits, uint32_t blen, const void *hex, uint32_t hlen)
 {
-    if (NULL == bits || NULL == hex) return -1;
-    if (blen <= hlen * 8) return -2;
+    if (NULL == bits || NULL == hex) return ORZ_RETVAL_ERROR(MOD_UTIL, RSN_NULLPTR, 5);
+    if (blen <= hlen * 8) return ORZ_RETVAL_ERROR(MOD_UTIL, RSN_SPACE_NO_ENOUGH, 5);
 
     return __hex2bits(bits, (const uint8_t *)hex, hlen, NULL);
 }
@@ -153,8 +154,8 @@ int orz_hex2bits(char *bits, uint32_t blen, const void *hex, uint32_t hlen)
 __ORZ_EXPORT
 int orz_hex2bits_separate(char *bits, uint32_t blen, const void *hex, uint32_t hlen, char sep)
 {
-    if (NULL == bits || NULL == hex) return -1;
-    if (blen < hlen * 9) return -2;
+    if (NULL == bits || NULL == hex) return ORZ_RETVAL_ERROR(MOD_UTIL, RSN_NULLPTR, 6);
+    if (blen < hlen * 9) return ORZ_RETVAL_ERROR(MOD_UTIL, RSN_SPACE_NO_ENOUGH, 6);
 
     return __hex2bits(bits, (const uint8_t *)hex, hlen, &sep);
 }

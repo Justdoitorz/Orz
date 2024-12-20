@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "orz_util.h"
+#include "orz_retval.h"
 
 
 TEST(Util, TestBit) 
@@ -181,9 +182,9 @@ TEST(Util, tovptr)
 
 TEST(Util, AllSame)
 {
-    EXPECT_LT(orz_allsame(NULL, 0), 0);
+    EXPECT_LT(orz_allsame(NULL, 0), ORZ_ERROR_LT);
     uint8_t tmp[1];
-    EXPECT_LT(orz_allsame(tmp, 0), 0);
+    EXPECT_LT(orz_allsame(tmp, 0), ORZ_ERROR_LT);
 
     uint8_t notsame[] = {1, 2, 1};
     EXPECT_EQ(orz_allsame(notsame, ORZ_ARRLEN(notsame)), false);
@@ -195,9 +196,9 @@ TEST(Util, AllSame)
 
 TEST(Util, AllSameValue)
 {
-    EXPECT_LT(orz_allsame_value(NULL, 0, 0), 0);
+    EXPECT_LT(orz_allsame_value(NULL, 0, 0), ORZ_ERROR_LT);
     uint8_t tmp[1];
-    EXPECT_LT(orz_allsame_value(tmp, 0, 0), 0);
+    EXPECT_LT(orz_allsame_value(tmp, 0, 0), ORZ_ERROR_LT);
 
     uint8_t notsame[] = {1, 2, 1};
     EXPECT_EQ(orz_allsame_value(notsame, ORZ_ARRLEN(notsame), 1), false);
@@ -213,10 +214,10 @@ TEST(Util, AllSameValue)
 TEST(Util, Str2Hex)
 {
     uint8_t hex[2];
-    EXPECT_LT(orz_str2hex(NULL, sizeof(hex), "BEEF", 4), 0);
-    EXPECT_LT(orz_str2hex(hex, sizeof(hex), NULL, 4), 0);
-    EXPECT_LT(orz_str2hex(hex, 1, "BEEF", 4), 0);
-    EXPECT_LT(orz_str2hex(hex, sizeof(hex), "BEEF", 3), 0);
+    EXPECT_LT(orz_str2hex(NULL, sizeof(hex), "BEEF", 4), ORZ_ERROR_LT);
+    EXPECT_LT(orz_str2hex(hex, sizeof(hex), NULL, 4), ORZ_ERROR_LT);
+    EXPECT_LT(orz_str2hex(hex, 1, "BEEF", 4), ORZ_ERROR_LT);
+    EXPECT_LT(orz_str2hex(hex, sizeof(hex), "BEEF", 3), ORZ_ERROR_LT);
 
 
     EXPECT_EQ(orz_str2hex(hex, sizeof(hex), "BEEF", 0), 0);
@@ -229,9 +230,9 @@ TEST(Util, Str2Hex)
 TEST(Util, Hex2Str)
 {
     char str[2 * 2 + 1];
-    EXPECT_LT(orz_hex2str(NULL, sizeof(str), "\xBE\xEF", 2), 0);
-    EXPECT_LT(orz_hex2str(str, sizeof(str), NULL, 2), 0);
-    EXPECT_LT(orz_hex2str(str, 4, "\xBE\xEF", 2), 0);
+    EXPECT_LT(orz_hex2str(NULL, sizeof(str), "\xBE\xEF", 2), ORZ_ERROR_LT);
+    EXPECT_LT(orz_hex2str(str, sizeof(str), NULL, 2), ORZ_ERROR_LT);
+    EXPECT_LT(orz_hex2str(str, 4, "\xBE\xEF", 2), ORZ_ERROR_LT);
 
 
     EXPECT_EQ(orz_hex2str(str, sizeof(str), "\xBE\xEF", 0), 0);
@@ -245,9 +246,9 @@ TEST(Util, Hex2Str)
 TEST(Util, Hex2StrSeparate)
 {
     char str[2 * 3];
-    EXPECT_LT(orz_hex2str_separate(NULL, sizeof(str), "\xBE\xEF", 2, ' '), 0);
-    EXPECT_LT(orz_hex2str_separate(str, sizeof(str), NULL, 2, ' '), 0);
-    EXPECT_LT(orz_hex2str_separate(str, 5, "\xBE\xEF", 2, ' '), 0);
+    EXPECT_LT(orz_hex2str_separate(NULL, sizeof(str), "\xBE\xEF", 2, ' '), ORZ_ERROR_LT);
+    EXPECT_LT(orz_hex2str_separate(str, sizeof(str), NULL, 2, ' '), ORZ_ERROR_LT);
+    EXPECT_LT(orz_hex2str_separate(str, 5, "\xBE\xEF", 2, ' '), ORZ_ERROR_LT);
 
 
     EXPECT_EQ(orz_hex2str_separate(str, sizeof(str), "\xBE\xEF", 0, ' '), 0);
@@ -262,9 +263,9 @@ TEST(Util, Hex2StrSeparate)
 TEST(Util, Hex2Bits)
 {
     char str[2 * 8 + 1];
-    EXPECT_LT(orz_hex2bits(NULL, sizeof(str), "\xBE\xEF", 2), 0);
-    EXPECT_LT(orz_hex2bits(str, sizeof(str), NULL, 2), 0);
-    EXPECT_LT(orz_hex2bits(str, 16, "\xBE\xEF", 2), 0);
+    EXPECT_LT(orz_hex2bits(NULL, sizeof(str), "\xBE\xEF", 2), ORZ_ERROR_LT);
+    EXPECT_LT(orz_hex2bits(str, sizeof(str), NULL, 2), ORZ_ERROR_LT);
+    EXPECT_LT(orz_hex2bits(str, 16, "\xBE\xEF", 2), ORZ_ERROR_LT);
 
 
     EXPECT_EQ(orz_hex2bits(str, sizeof(str), "\xBE\xEF", 0), 0);
@@ -278,9 +279,9 @@ TEST(Util, Hex2Bits)
 TEST(Util, Hex2BitsSeparate)
 {
     char str[2 * 9];
-    EXPECT_LT(orz_hex2bits_separate(NULL, sizeof(str), "\xBE\xEF", 2, ' '), 0);
-    EXPECT_LT(orz_hex2bits_separate(str, sizeof(str), NULL, 2, ' '), 0);
-    EXPECT_LT(orz_hex2bits_separate(str, 17, "\xBE\xEF", 2, ' '), 0);
+    EXPECT_LT(orz_hex2bits_separate(NULL, sizeof(str), "\xBE\xEF", 2, ' '), ORZ_ERROR_LT);
+    EXPECT_LT(orz_hex2bits_separate(str, sizeof(str), NULL, 2, ' '), ORZ_ERROR_LT);
+    EXPECT_LT(orz_hex2bits_separate(str, 17, "\xBE\xEF", 2, ' '), ORZ_ERROR_LT);
 
 
     EXPECT_EQ(orz_hex2bits_separate(str, sizeof(str), "\xBE\xEF", 0, ' '), 0);
@@ -302,5 +303,28 @@ TEST(Util, Bin1Bits)
     for (uint32_t idx = 0; idx < 64; ++idx) {
         EXPECT_EQ(orz_bin_1bits(1ULL << idx), 1);
     }
+}
+
+
+TEST(Util, tostringInError) {
+    char str[RETVAL_STRING_SIZE];
+    int ret;
+
+    ret = orz_retval_tostring(ORZ_RETVAL_ERROR(MOD_UTIL, RSN_NULLPTR, 0), str, sizeof(str));
+    ASSERT_GE(ret, 0);
+    EXPECT_STREQ(str, "mod[1]: MOD_UTIL, rsn[0]: RSN_NULLPTR, sub[0]");
+
+    ret = orz_retval_tostring(ORZ_RETVAL_ERROR(MOD_UTIL, RSN_ZERO_LENGTH, 0), str, sizeof(str));
+    ASSERT_GE(ret, 0);
+    EXPECT_STREQ(str, "mod[1]: MOD_UTIL, rsn[2]: RSN_ZERO_LENGTH, sub[0]");
+
+
+    ret = orz_retval_tostring(ORZ_RETVAL_ERROR(MOD_UTIL, RSN_WRONG_LENGTH, 2), str, sizeof(str));
+    ASSERT_GE(ret, 0);
+    EXPECT_STREQ(str, "mod[1]: MOD_UTIL, rsn[3]: RSN_WRONG_LENGTH, sub[2]");
+
+    ret = orz_retval_tostring(ORZ_RETVAL_ERROR(MOD_UTIL, RSN_SPACE_NO_ENOUGH, 2), str, sizeof(str));
+    ASSERT_GE(ret, 0);
+    EXPECT_STREQ(str, "mod[1]: MOD_UTIL, rsn[1]: RSN_SPACE_NO_ENOUGH, sub[2]");
 }
 
