@@ -9,6 +9,9 @@ TEST(Retval, reason) {
     EXPECT_STREQ("RSN_SPACE_NO_ENOUGH", orz_retval_reason(RSN_SPACE_NO_ENOUGH));
     EXPECT_STREQ("RSN_ZERO_LENGTH", orz_retval_reason(RSN_ZERO_LENGTH));
     EXPECT_STREQ("RSN_WRONG_LENGTH", orz_retval_reason(RSN_WRONG_LENGTH));
+    EXPECT_STREQ("RSN_EXCEED_YDAYS", orz_retval_reason(RSN_EXCEED_YDAYS));
+    EXPECT_STREQ("RSN_WRONG_MONTH", orz_retval_reason(RSN_WRONG_MONTH));
+    EXPECT_STREQ("RSN_WRONG_DAY", orz_retval_reason(RSN_WRONG_DAY));
 
     EXPECT_STREQ("Invalid", orz_retval_reason(RSN_USR_MINIMUM));
 }

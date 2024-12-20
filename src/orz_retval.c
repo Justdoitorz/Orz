@@ -14,6 +14,40 @@
 
 #include <stdio.h>
 
+static const char *tostring_module(uint32_t module) 
+{
+    static const char * const module_str[] = {
+        ORZ_XSTR(MOD_RETVAL),
+        ORZ_XSTR(MOD_UTIL),
+        ORZ_XSTR(MOD_ALGORITHM),
+        ORZ_XSTR(MOD_DATE),
+    };
+
+    return ORZ_TOSTRING_EASY(module_str, module);
+}
+
+
+static const char *tostring_reason(uint32_t reason) 
+{
+    static const char * const reason_str[] = {
+        ORZ_XSTR(RSN_NULLPTR),
+        ORZ_XSTR(RSN_SPACE_NO_ENOUGH),
+        ORZ_XSTR(RSN_ZERO_LENGTH),
+        ORZ_XSTR(RSN_WRONG_LENGTH),
+        ORZ_XSTR(RSN_EXCEED_YDAYS),
+        ORZ_XSTR(RSN_WRONG_MONTH),
+        ORZ_XSTR(RSN_WRONG_DAY),
+    };
+
+    return ORZ_TOSTRING_EASY(reason_str, reason);
+}
+
+__ORZ_EXPORT
+const char *orz_retval_reason(uint32_t reason) 
+{
+    return tostring_reason(reason);
+}
+
 static int default_error_tostring(int error, char *str, uint32_t size)
 {
     uint32_t module = ERROR_GET_MODULE(error);
@@ -42,37 +76,6 @@ int orz_retval_reg(int (*tostring)(int, char *, uint32_t))
     usr_tostring = tostring;
 
     return RETVAL_OK;
-}
-
-
-static const char *tostring_module(uint32_t module) 
-{
-    static const char * const module_str[] = {
-        ORZ_XSTR(MOD_RETVAL),
-        ORZ_XSTR(MOD_UTIL),
-        ORZ_XSTR(MOD_ALGORITHM),
-    };
-
-    return ORZ_TOSTRING_EASY(module_str, module);
-}
-
-
-static const char *tostring_reason(uint32_t reason) 
-{
-    static const char * const reason_str[] = {
-        ORZ_XSTR(RSN_NULLPTR),
-        ORZ_XSTR(RSN_SPACE_NO_ENOUGH),
-        ORZ_XSTR(RSN_ZERO_LENGTH),
-        ORZ_XSTR(RSN_WRONG_LENGTH),
-    };
-
-    return ORZ_TOSTRING_EASY(reason_str, reason);
-}
-
-__ORZ_EXPORT
-const char *orz_retval_reason(uint32_t reason) 
-{
-    return tostring_reason(reason);
 }
 
 static int error_tostring(int error, char *str, uint32_t size)

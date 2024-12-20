@@ -73,6 +73,7 @@ enum {
     MOD_RETVAL              = 0,
     MOD_UTIL,                
     MOD_ALGORITHM,
+    MOD_DATE,
 
 
     MOD_USR_MINIMUM          = 1 << (ERROR_MODULE_LEN - 1),
@@ -85,6 +86,9 @@ enum {
     RSN_SPACE_NO_ENOUGH,
     RSN_ZERO_LENGTH,
     RSN_WRONG_LENGTH,
+    RSN_EXCEED_YDAYS,
+    RSN_WRONG_MONTH,
+    RSN_WRONG_DAY,
 
     RSN_USR_MINIMUM         = 1 << (ERROR_REASON_LEN - 1),
     //

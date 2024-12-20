@@ -31,3 +31,6 @@ add_executable(retval_test retval_test.cpp)
 target_link_libraries(retval_test PRIVATE orz GTest::GTest GTest::Main)
 add_test(NAME retval COMMAND retval_test)
 
+add_executable(date_test date_test.cpp)
+target_link_libraries(date_test PRIVATE orz GTest::GTest GTest::Main)
+add_test(NAME date COMMAND date_test)
