@@ -9,13 +9,14 @@
  * 
  */
 #include "orz_algorithm.h"
+#include "orz_retval.h"
 
 
 __ORZ_EXPORT
 int orz_common_search(const void *entry, uint32_t nmemb, uint32_t size, fn_comp comp, const void *rhs)
 {
     if (NULL == entry || NULL == comp)
-        return -1;
+        return ORZ_RETVAL_ERROR(MOD_ALGORITHM, RSN_NULLPTR, 0);
     
     for (uint32_t idx = 0; idx < nmemb; ++idx) {
         if (comp(tovptr(entry, size, idx), rhs) == 0) {
@@ -23,14 +24,14 @@ int orz_common_search(const void *entry, uint32_t nmemb, uint32_t size, fn_comp 
         }
     }
 
-    return -100;
+    return RETVAL_NOT_FOUND;
 }
 
 __ORZ_EXPORT
 int orz_binary_search(const void *entry, uint32_t nmemb, uint32_t size, fn_comp comp, const void *rhs)
 {
     if (NULL == entry || NULL == comp)
-        return -1;
+        return ORZ_RETVAL_ERROR(MOD_ALGORITHM, RSN_NULLPTR, 1);
 
     int left = 0, right = nmemb - 1;
 
@@ -43,6 +44,6 @@ int orz_binary_search(const void *entry, uint32_t nmemb, uint32_t size, fn_comp 
         else return mid;
     }
        
-    return -100;
+    return RETVAL_NOT_FOUND;
 }
 

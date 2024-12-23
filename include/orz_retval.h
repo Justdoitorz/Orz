@@ -82,7 +82,9 @@ enum {
 
 enum {
     RSN_NULLPTR             = 0,
-    RSN_SPACE_NO_ENOUGH     = 1,
+    RSN_SPACE_NO_ENOUGH,
+    RSN_ZERO_LENGTH,
+    RSN_WRONG_LENGTH,
 
     RSN_USR_MINIMUM         = 1 << (ERROR_REASON_LEN - 1),
     //

@@ -7,6 +7,8 @@
 TEST(Retval, reason) {
     EXPECT_STREQ("RSN_NULLPTR", orz_retval_reason(RSN_NULLPTR));
     EXPECT_STREQ("RSN_SPACE_NO_ENOUGH", orz_retval_reason(RSN_SPACE_NO_ENOUGH));
+    EXPECT_STREQ("RSN_ZERO_LENGTH", orz_retval_reason(RSN_ZERO_LENGTH));
+    EXPECT_STREQ("RSN_WRONG_LENGTH", orz_retval_reason(RSN_WRONG_LENGTH));
 
     EXPECT_STREQ("Invalid", orz_retval_reason(RSN_USR_MINIMUM));
 }

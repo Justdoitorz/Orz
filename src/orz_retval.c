@@ -62,6 +62,8 @@ static const char *tostring_reason(uint32_t reason)
     static const char * const reason_str[] = {
         ORZ_XSTR(RSN_NULLPTR),
         ORZ_XSTR(RSN_SPACE_NO_ENOUGH),
+        ORZ_XSTR(RSN_ZERO_LENGTH),
+        ORZ_XSTR(RSN_WRONG_LENGTH),
     };
 
     return ORZ_TOSTRING_EASY(reason_str, reason);

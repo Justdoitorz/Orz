@@ -44,9 +44,10 @@ __ORZ_C_ENTER__
 /**
  * @brief get boolean string from integer
  *
- * @param xbool boolean value, not 0 is true
- * @retval == 0, "False"
- * @retval != 0, "True"
+ * @param xbool boolean value
+ * @retval "False", if xbool is 0
+ * @retval "True", if xbool is 1
+ * @retval "Invalid", else
  */
 const char *orz_tostring_bool(uint32_t xbool);
 
