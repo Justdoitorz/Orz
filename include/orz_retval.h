@@ -99,8 +99,32 @@ enum {
 
 __ORZ_C_ENTER__
 
+/**
+ * @brief Get the string representation of an error reason.
+ *
+ * @param reason The error reason code.
+ * @retval non-NULL, The string representation.
+ */
 const char *orz_retval_reason(uint32_t reason);
+
+/**
+ * @brief Convert a return value to a string.
+ *
+ * @param retval The return value to convert.
+ * @param[out] str The buffer to store the string representation.
+ * @param size The size of the buffer.
+ * @retval < 0, Error
+ * @retval else, The number of characters written.
+ */
 int orz_retval_tostring(int retval, char *str, uint32_t size);
+
+/**
+ * @brief Register a user-defined error handling function.
+ *
+ * @param usr The user-defined error handling function.
+ * @retval < 0, Error
+ * @retval 0, OK
+ */
 int orz_retval_reg(int (*usr)(int, char *, uint32_t));
 
 __ORZ_C_LEAVE__
