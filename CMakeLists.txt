@@ -27,5 +27,6 @@ if (ORZ_TEST)
     enable_testing()
 endif()
 
-install(TARGETS orz)
+install(TARGETS orz LIBRARY DESTINATION lib)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ DESTINATION include)
 
