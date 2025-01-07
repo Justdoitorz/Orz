@@ -21,6 +21,7 @@ static const char *tostring_module(uint32_t module)
         ORZ_XSTR(MOD_UTIL),
         ORZ_XSTR(MOD_ALGORITHM),
         ORZ_XSTR(MOD_DATE),
+        ORZ_XSTR(MOD_ALLOC),
     };
 
     return ORZ_TOSTRING_EASY(module_str, module);

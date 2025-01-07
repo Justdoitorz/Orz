@@ -16,6 +16,7 @@ add_library(orz SHARED
     src/orz_tostring.c
     src/orz_retval.c
     src/orz_date.c
+    src/orz_alloc.c
 )
 
 

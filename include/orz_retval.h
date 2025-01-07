@@ -74,6 +74,7 @@ enum {
     MOD_UTIL,                
     MOD_ALGORITHM,
     MOD_DATE,
+    MOD_ALLOC,
 
 
     MOD_USR_MINIMUM          = 1 << (ERROR_MODULE_LEN - 1),
