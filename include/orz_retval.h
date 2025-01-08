@@ -75,6 +75,7 @@ enum {
     MOD_ALGORITHM,
     MOD_DATE,
     MOD_ALLOC,
+    MOD_BUFFER,
 
 
     MOD_USR_MINIMUM          = 1 << (ERROR_MODULE_LEN - 1),
@@ -90,6 +91,8 @@ enum {
     RSN_EXCEED_YDAYS,
     RSN_WRONG_MONTH,
     RSN_WRONG_DAY,
+    RSN_LARGE_LENGTH,
+    RSN_OUT_OF_RANGE,
 
     RSN_USR_MINIMUM         = 1 << (ERROR_REASON_LEN - 1),
     //

@@ -41,6 +41,10 @@
 
 #define ORZ_ENTRY_EXPAND3(entry)    entry, ORZ_ARRLEN(entry), sizeof(0[entry])
 
+#define ORZ_CONTAINER_OF(ptr, type, member) ({          \
+	uint8_t *__mptr = (uint8_t *)(ptr);                 \
+	((type *)(__mptr - offsetof(type, member))); })
+
 /**
  * @brief Convert hexadecimal values to characters
  * 

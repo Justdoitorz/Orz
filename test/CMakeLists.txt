@@ -38,3 +38,7 @@ add_test(NAME date COMMAND date_test)
 add_executable(alloc_test alloc_test.cpp)
 target_link_libraries(alloc_test PRIVATE orz GTest::GTest GTest::Main)
 add_test(NAME alloc COMMAND alloc_test)
+
+add_executable(buffer_test buffer_test.cpp)
+target_link_libraries(buffer_test PRIVATE orz GTest::GTest GTest::Main)
+add_test(NAME buffer COMMAND buffer_test)

@@ -22,6 +22,7 @@ static const char *tostring_module(uint32_t module)
         ORZ_XSTR(MOD_ALGORITHM),
         ORZ_XSTR(MOD_DATE),
         ORZ_XSTR(MOD_ALLOC),
+        ORZ_XSTR(MOD_BUFFER),
     };
 
     return ORZ_TOSTRING_EASY(module_str, module);
@@ -38,6 +39,8 @@ static const char *tostring_reason(uint32_t reason)
         ORZ_XSTR(RSN_EXCEED_YDAYS),
         ORZ_XSTR(RSN_WRONG_MONTH),
         ORZ_XSTR(RSN_WRONG_DAY),
+        ORZ_XSTR(RSN_LARGE_LENGTH),
+        ORZ_XSTR(RSN_OUT_OF_RANGE),
     };
 
     return ORZ_TOSTRING_EASY(reason_str, reason);
