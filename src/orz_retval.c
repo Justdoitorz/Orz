@@ -109,7 +109,7 @@ static const char *tostring_retval(int retval)
 {
     static const char * const retval_str[] = {
         ORZ_XSTR(RETVAL_NOT_FOUND),
-        ORZ_XSTR(RETVAL_MOMORY_EMPTY), 
+        ORZ_XSTR(RETVAL_MEMORY_EMPTY), 
     };
 
     return ORZ_TOSTRING_DFT(retval_str, retval - RETVAL_MINIMUM, "Out of retval");

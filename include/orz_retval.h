@@ -60,7 +60,7 @@ enum {
 
     RETVAL_MINIMUM          = -127,
     RETVAL_NOT_FOUND        = RETVAL_MINIMUM, 
-    RETVAL_MOMORY_EMPTY, 
+    RETVAL_MEMORY_EMPTY, 
 
 
 /***************************************/   
