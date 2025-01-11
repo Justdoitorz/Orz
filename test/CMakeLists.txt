@@ -42,3 +42,7 @@ add_test(NAME alloc COMMAND alloc_test)
 add_executable(buffer_test buffer_test.cpp)
 target_link_libraries(buffer_test PRIVATE orz GTest::GTest GTest::Main)
 add_test(NAME buffer COMMAND buffer_test)
+
+add_executable(mutex_test mutex_test.cpp)
+target_link_libraries(mutex_test PRIVATE orz GTest::GTest GTest::Main)
+add_test(NAME mutex COMMAND mutex_test)

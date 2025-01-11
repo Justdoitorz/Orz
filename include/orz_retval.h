@@ -61,6 +61,7 @@ enum {
     RETVAL_MINIMUM          = -127,
     RETVAL_NOT_FOUND        = RETVAL_MINIMUM, 
     RETVAL_MEMORY_EMPTY, 
+    RETVAL_INIT_FAILED,
 
 
 /***************************************/   
@@ -76,6 +77,7 @@ enum {
     MOD_DATE,
     MOD_ALLOC,
     MOD_BUFFER,
+    MOD_MUTEX,
 
 
     MOD_USR_MINIMUM          = 1 << (ERROR_MODULE_LEN - 1),
