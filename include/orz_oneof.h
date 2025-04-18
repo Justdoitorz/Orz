@@ -18,7 +18,7 @@
 
 #define ORZ_ONEOF_EASY(entry, idx)                          oneof_easy(ORZ_ENTRY_EXPAND3(entry), idx, NULL)
 #define ORZ_ONEOF_DFT(entry, idx, dft)                      oneof_easy(ORZ_ENTRY_EXPAND3(entry), idx, dft)
-#define ORZ_ONEOF_EX(entry, nmemb, size, idx, dft)          oneof_easy(entry, nmemb, size, idx, NULL)
+#define ORZ_ONEOF_EX(entry, nmemb, size, idx, dft)          oneof_easy(entry, nmemb, size, idx, dft)
 
 /**
  * @brief For the freedom!
