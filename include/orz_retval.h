@@ -78,6 +78,7 @@ enum {
     MOD_ALLOC,
     MOD_BUFFER,
     MOD_MUTEX,
+    MOD_BITSET,
 
 
     MOD_USR_MINIMUM          = 1 << (ERROR_MODULE_LEN - 1),

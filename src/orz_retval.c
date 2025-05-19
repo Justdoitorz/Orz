@@ -24,6 +24,7 @@ static const char *tostring_module(uint32_t module)
         ORZ_XSTR(MOD_ALLOC),
         ORZ_XSTR(MOD_BUFFER),
         ORZ_XSTR(MOD_MUTEX),
+        ORZ_XSTR(MOD_BITSET),
     };
 
     return ORZ_TOSTRING_EASY(module_str, module);

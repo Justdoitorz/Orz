@@ -46,3 +46,7 @@ add_test(NAME buffer COMMAND buffer_test)
 add_executable(mutex_test mutex_test.cpp)
 target_link_libraries(mutex_test PRIVATE orz GTest::GTest GTest::Main)
 add_test(NAME mutex COMMAND mutex_test)
+
+add_executable(bitset_test bitset_test.cpp)
+target_link_libraries(bitset_test PRIVATE orz GTest::GTest GTest::Main)
+add_test(NAME bitset COMMAND bitset_test)
