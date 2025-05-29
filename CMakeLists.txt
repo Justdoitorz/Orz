@@ -19,6 +19,7 @@ add_library(orz SHARED
     src/orz_alloc.c
     src/orz_mutex.c
     src/orz_bitset.c
+    src/orz_ringbuffer.c
 )
 
 

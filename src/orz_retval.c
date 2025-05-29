@@ -25,6 +25,7 @@ static const char *tostring_module(uint32_t module)
         ORZ_XSTR(MOD_BUFFER),
         ORZ_XSTR(MOD_MUTEX),
         ORZ_XSTR(MOD_BITSET),
+        ORZ_XSTR(MOD_RINGBUFFER),
     };
 
     return ORZ_TOSTRING_EASY(module_str, module);
@@ -113,6 +114,8 @@ static const char *tostring_retval(int retval)
         ORZ_XSTR(RETVAL_NOT_FOUND),
         ORZ_XSTR(RETVAL_MEMORY_EMPTY), 
         ORZ_XSTR(RETVAL_INIT_FAILED), 
+        ORZ_XSTR(RETVAL_DATA_COMING),
+        ORZ_XSTR(RETVAL_HAD_STOPED),
     };
 
     return ORZ_TOSTRING_DFT(retval_str, retval - RETVAL_MINIMUM, "Out of retval");

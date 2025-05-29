@@ -99,6 +99,19 @@ TEST(Util, Pow2N)
     EXPECT_EQ(ORZ_POW2_N(10), 1024);    
 }
 
+TEST(Util, IsPow2)
+{
+    EXPECT_EQ(ORZ_IS_POW2(0), 0);
+    EXPECT_EQ(ORZ_IS_POW2(1), 1);
+    EXPECT_EQ(ORZ_IS_POW2(2), 1);
+    EXPECT_EQ(ORZ_IS_POW2(3), 0);
+    EXPECT_EQ(ORZ_IS_POW2(4), 1);
+    EXPECT_EQ(ORZ_IS_POW2(5), 0);
+    EXPECT_EQ(ORZ_IS_POW2(6), 0);
+    EXPECT_EQ(ORZ_IS_POW2(7), 0);
+    EXPECT_EQ(ORZ_IS_POW2(8), 1);
+}
+
 TEST(Util, ArrayLength)
 {
     char hello[] = "hello";

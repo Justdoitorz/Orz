@@ -12,6 +12,8 @@ TEST(Retval, reason) {
     EXPECT_STREQ("RSN_EXCEED_YDAYS", orz_retval_reason(RSN_EXCEED_YDAYS));
     EXPECT_STREQ("RSN_WRONG_MONTH", orz_retval_reason(RSN_WRONG_MONTH));
     EXPECT_STREQ("RSN_WRONG_DAY", orz_retval_reason(RSN_WRONG_DAY));
+    EXPECT_STREQ("RSN_LARGE_LENGTH", orz_retval_reason(RSN_LARGE_LENGTH));
+    EXPECT_STREQ("RSN_OUT_OF_RANGE", orz_retval_reason(RSN_OUT_OF_RANGE));
 
     EXPECT_STREQ("Invalid", orz_retval_reason(RSN_USR_MINIMUM));
 }

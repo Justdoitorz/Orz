@@ -50,3 +50,7 @@ add_test(NAME mutex COMMAND mutex_test)
 add_executable(bitset_test bitset_test.cpp)
 target_link_libraries(bitset_test PRIVATE orz GTest::GTest GTest::Main)
 add_test(NAME bitset COMMAND bitset_test)
+
+add_executable(ringbuffer_test ringbuffer_test.cpp)
+target_link_libraries(ringbuffer_test PRIVATE orz GTest::GTest GTest::Main)
+add_test(NAME ringbuffer COMMAND ringbuffer_test)

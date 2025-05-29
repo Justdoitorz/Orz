@@ -62,6 +62,8 @@ enum {
     RETVAL_NOT_FOUND        = RETVAL_MINIMUM, 
     RETVAL_MEMORY_EMPTY, 
     RETVAL_INIT_FAILED,
+    RETVAL_DATA_COMING,
+    RETVAL_HAD_STOPED,
 
 
 /***************************************/   
@@ -79,6 +81,7 @@ enum {
     MOD_BUFFER,
     MOD_MUTEX,
     MOD_BITSET,
+    MOD_RINGBUFFER,
 
 
     MOD_USR_MINIMUM          = 1 << (ERROR_MODULE_LEN - 1),

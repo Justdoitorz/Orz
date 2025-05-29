@@ -31,6 +31,7 @@
 #define ORZ_ALIGNDOWN2(x, a)    ((x) & ~((a) - 1))
 
 #define ORZ_POW2_N(n)           (1ULL << (n))
+#define ORZ_IS_POW2(v)          ((v) && !((v) & ((v) - 1)))
 #define ORZ_ARRLEN(array)       ((sizeof(array)/sizeof(0[array])))
 
 #define xSTR(x)                 #x
